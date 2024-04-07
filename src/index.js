@@ -3,29 +3,29 @@ import { createRoot } from 'react-dom/client'
 import './index.css'
 import reportWebVitals from './reportWebVitals'
 
-const onChange = (event) => {
-  console.log('changed', event, event.target, event.target.value)
-}
-// input on change
-const inputOnChange = document.createElement('input')
-inputOnChange.placeholder = 'input HTML-Change'
-inputOnChange.addEventListener('change', onChange)
+import Hello from './HelloReact'
+import HelloJS from './HelloJS'
 
-document.body.appendChild(inputOnChange)
-// input on input
-const inputOnInput = document.createElement('input')
-inputOnInput.placeholder = 'input HTML-Input'
-inputOnInput.addEventListener('input', onChange)
+const helloJS1 = new HelloJS()
+document.body.appendChild(helloJS1.render())
+const helloJS2 = new HelloJS()
+document.body.appendChild(helloJS2.render())
 
-document.body.appendChild(inputOnInput)
+/* Code below in reactDOM.render is the same sa JSX
+ <div>
+<Hello/>
+<Hello/>
+</div> */
 
 createRoot(
   document.getElementById('root'))
   .render(
-    <input
-      onChange={onChange}
-      placeholder={'input JSX'}
-    />
+    React.createElement('div',
+      {}, [
+        React.createElement(Hello),
+        React.createElement(Hello)
+      ]
+    )
 
   )
 
