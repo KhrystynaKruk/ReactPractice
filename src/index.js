@@ -3,19 +3,30 @@ import { createRoot } from 'react-dom/client'
 import './index.css'
 import reportWebVitals from './reportWebVitals'
 
-const onClick = (event) => {
-  console.log('Clicked', event, event.target)
+const onChange = (event) => {
+  console.log('changed', event, event.target, event.target.value)
 }
-const button = document.createElement('button')
-button.innerText = 'Pure js'
-button.addEventListener('click', onClick)
+// input on change
+const inputOnChange = document.createElement('input')
+inputOnChange.placeholder = 'input HTML-Change'
+inputOnChange.addEventListener('change', onChange)
 
-document.body.appendChild(button)
+document.body.appendChild(inputOnChange)
+// input on input
+const inputOnInput = document.createElement('input')
+inputOnInput.placeholder = 'input HTML-Input'
+inputOnInput.addEventListener('input', onChange)
+
+document.body.appendChild(inputOnInput)
 
 createRoot(
   document.getElementById('root'))
   .render(
-    <button onClick={onClick}>Pure react</button>
+    <input
+      onChange={onChange}
+      placeholder={'input JSX'}
+    />
+
   )
 
 // If you want to start measuring performance in your app, pass a function
