@@ -1,30 +1,18 @@
 import React from 'react'
 import { createRoot } from 'react-dom/client'
 import './index.css'
-import reportWebVitals from './reportWebVitals'
-
 import Hello from './HelloReact'
-import HelloJS from './HelloJS'
-
-const helloJS1 = new HelloJS()
-document.body.appendChild(helloJS1.render())
-const helloJS2 = new HelloJS()
-document.body.appendChild(helloJS2.render())
-
-/* Code below in reactDOM.render is the same sa JSX
- <div>
-<Hello/>
-<Hello/>
-</div> */
+import HelloClass from './HelloClass'
+import reportWebVitals from './reportWebVitals'
 
 createRoot(
   document.getElementById('root'))
   .render(
-    React.createElement('div',
-      {}, [
-        React.createElement(Hello),
-        React.createElement(Hello)
-      ]
+    React.createElement('div', null,
+      <div>
+        <Hello/>
+        <HelloClass/>
+      </div>
     )
 
   )
